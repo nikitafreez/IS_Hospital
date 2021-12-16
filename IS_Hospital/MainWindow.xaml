@@ -1,0 +1,38 @@
+﻿<Window x:Class="IS_Hospital.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IS_Hospital"
+        mc:Ignorable="d"
+        Title="Главное окно" Height="450" Width="800" WindowState="Maximized"
+        KeyDown="AdminMenuItem_KeyDown">
+    <Grid>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Экспорт">
+                    <MenuItem Header="Word"/>
+                    <MenuItem Header="PDF"/>
+                    <Separator/>
+                    <MenuItem Header="Excel"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Перейти в админ-панель" Click="AdminMenuItem_Click" x:Name="AdminPanelMenuItem"/>
+                <MenuItem Header="Выйти" Click="ExitMenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Вид">
+                <MenuItem Header="Обновить" InputGestureText="F5" Click="UpdateTables_Click"/>
+            </MenuItem>
+            <MenuItem Header="Справка">
+
+            </MenuItem>
+        </Menu>
+        <TabControl Margin="0, 25, 0, 0">
+            <TabItem Header="Отдел Кадров"></TabItem>
+            <TabItem Header="Бухгалтерия"></TabItem>
+            <TabItem Header="Клиенты"></TabItem>
+            <TabItem Header="Мед. оборудование"></TabItem>
+            <TabItem Header="Мед. услуги"></TabItem>
+        </TabControl>
+    </Grid>
+</Window>

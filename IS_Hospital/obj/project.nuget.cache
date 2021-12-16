@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "fKOhrtk28SXC71NxTLncawya1/VPORufR9aWt68yi56Pb9Nx/OA3VSJ4tGi2e0ywEMatsA9pYro9O+Jw0pfhhA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nikit\\source\\repos\\IS_Hospital\\IS_Hospital\\IS_Hospital.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nikit\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

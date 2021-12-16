@@ -1,0 +1,37 @@
+﻿<Window x:Class="IS_Hospital.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IS_Hospital"
+        mc:Ignorable="d"
+Title="Авторизация" Height="450" Width="800" FontFamily="Century Gothic" Background="#FFF0F0F0" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="300" MinHeight="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Label Content="Логин" HorizontalAlignment="Left"  VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="18" Height="32" Width="63"/>
+            <TextBox x:Name="loginBox" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="192" FontSize="16" Height="22"/>
+            <Label Content="Пароль" HorizontalAlignment="Left"  VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="18" Height="32" Width="77"/>
+            <TextBox x:Name="passwordBox" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="192" TextChanged="passwordBox_TextChanged" FontSize="16" Height="22"/>
+            <StackPanel Margin="0, 5">
+                <!--<StackPanel Orientation="Horizontal" Width="190" >
+                    <Button x:Name="loginButton" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16"  Background="#FF5FD400" Foreground="Black" Width="57" Height="24"/>
+                    <Button x:Name="registerButton" Content="Регистрация" Margin="11,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Foreground="Black" Width="122" Height="24" Background="#FF00B0E0" Click="registerButton_Click"/>
+                </StackPanel>-->
+                <Button x:Name="loginButton" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16"  Background="#FF5FD400" Foreground="Black" Width="57" Height="24" Click="loginButton_Click"/>
+                <Button x:Name="recoverButton" Content="Восстановить пароль" Margin="0, 5" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="16" Foreground="#FF511E1E" Width="192" Height="24"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
+

@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "f6e1e009-4703-4339-8dd4-2d3e15e5926f": {
+      "ProjectGuid": "f6e1e009-4703-4339-8dd4-2d3e15e5926f",
+      "DisplayName": "IS_Hospital",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
+    },
+    "422dce7c-5a96-4577-89fb-5e9dec6cd3c7": {
+      "ProjectGuid": "422dce7c-5a96-4577-89fb-5e9dec6cd3c7",
+      "DisplayName": "IS_Hospital_Admin",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
