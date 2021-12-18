@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:IS_Hospital_Admin"
         mc:Ignorable="d"
         Title="Админ окно" Height="450" Width="800" WindowState="Maximized"
-        Loaded="AdminWindow_Loaded">
+        Loaded="AdminWindow_Loaded" FontFamily="Century Gothic">
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="Файл">
@@ -34,17 +34,18 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Margin="10,0,10,0" Grid.ColumnSpan="2">
                                 <Label Content="Логин" />
-                                <TextBox HorizontalAlignment="Left" x:Name="loginTextBox" Width="100" Margin="0, -5" />
+                                <TextBox HorizontalAlignment="Left" x:Name="loginTextBox" Width="120" Margin="0, -5" />
                                 <Label Content="Пароль" />
                                 <TextBox HorizontalAlignment="Left" x:Name="passwordTextBox"
-                                             Width="100" Margin="0, -5" />
+                                         Width="120" Margin="0, -5" />
                                 <Label Content="Роль" />
-                                <ComboBox HorizontalAlignment="Left" x:Name="roleComboBox" Width="100" Margin="0, -5" />
-                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Width="175"
+                                <ComboBox HorizontalAlignment="Left" x:Name="roleComboBox" Width="120" Margin="0, -5" />
+                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal"
                                             Margin="0, 10">
                                     <Button x:Name="userAdd" Content="Добавить" Click="userAdd_Click" />
-                                    <Button x:Name="userUpdate" Content="Изменить" Margin="5, 0" Click="UserUpdate_OnClick"/>
-                                    <Button x:Name="userDelete" Content="Удалить" Click="UserDelete_OnClick"/>
+                                    <Button x:Name="userUpdate" Content="Изменить" Margin="5, 0"
+                                            Click="UserUpdate_OnClick" />
+                                    <Button x:Name="userDelete" Content="Удалить" Click="UserDelete_OnClick" />
                                 </StackPanel>
                             </StackPanel>
                             <DataGrid x:Name="userDataGrid" Margin="0, 145, 0, 0" Grid.ColumnSpan="2"
@@ -70,8 +71,8 @@
                         <Grid>
                             <StackPanel Margin="10, 0">
                                 <Label Content="Название роли" />
-                                <TextBox HorizontalAlignment="Left" x:Name="roleTextBox" Width="100" />
-                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Width="175"
+                                <TextBox HorizontalAlignment="Left" x:Name="roleTextBox" Width="120" />
+                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal"
                                             Margin="0, 5">
                                     <Button x:Name="roleAdd" Content="Добавить" Click="roleAdd_Click" />
                                     <Button x:Name="roleUpdate" Content="Изменить" Margin="5, 0"
@@ -99,21 +100,74 @@
             </TabItem>
             <TabItem Header="Отдел Кадров">
                 <TabControl>
-                    <TabItem Header="Пасспорта">
+                    <TabItem Header="Паспорта">
                         <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="79*" />
-                                <ColumnDefinition Width="318*" />
-                            </Grid.ColumnDefinitions>
                             <StackPanel Margin="10,0,10,0" Grid.ColumnSpan="2">
-                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Width="175"
-                                            Margin="0, 10">
+                                <DockPanel HorizontalAlignment="Stretch"
+                                           Margin="0, 10">
                                     <Button x:Name="passportAdd" Content="Добавить" Click="PassportAdd_OnClick" />
-                                    <Button x:Name="passportUpdate" Content="Изменить" Margin="5, 0" Click="PassportUpdate_OnClick"/>
-                                    <Button x:Name="passportDelete" Content="Удалить" Click="PassportDelete_OnClick"/>
-                                </StackPanel>
+                                    <Button x:Name="passportUpdate" Content="Изменить" Margin="5, 0"
+                                            Click="PassportUpdate_OnClick" />
+                                    <Button x:Name="passportDelete" Content="Удалить" Click="PassportDelete_OnClick" />
+                                    <Button x:Name="passportsUpdate" HorizontalAlignment="Right"
+                                            Click="PassportsUpdate_OnClick">
+                                        <StackPanel>
+                                            <Image Source="Images/updateIcon.png" Width="20" />
+                                        </StackPanel>
+                                    </Button>
+
+                                </DockPanel>
                             </StackPanel>
-                            <DataGrid Margin="0, 40, 0, 0" Grid.ColumnSpan="2" />
+                            <DataGrid Margin="0, 40, 0, 0" Grid.ColumnSpan="2" x:Name="passportDataGrid"
+                                      SelectedCellsChanged="PassportDataGrid_OnSelectedCellsChanged"
+                                      AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID Паспорта" Binding="{Binding Id}" />
+                                    <DataGridTextColumn Header="Серия" Binding="{Binding PassportSeries}" />
+                                    <DataGridTextColumn Header="Номер" Binding="{Binding PassportNumber}" />
+                                    <DataGridTextColumn Header="Выдан" Binding="{Binding PassportWhoGive}" />
+                                    <DataGridTextColumn Header="Дата выдачи" Binding="{Binding PassportDateOfGive}" />
+                                    <DataGridTextColumn Header="Имя" Binding="{Binding PassportFirstName}" />
+                                    <DataGridTextColumn Header="Фамилия" Binding="{Binding PassportSecondName}" />
+                                    <DataGridTextColumn Header="Отчество" Binding="{Binding PassportMiddleName}" />
+                                    <DataGridTextColumn Header="Пол" Binding="{Binding PassportGender}" />
+                                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding PassportDateOfBirth}" />
+                                    <DataGridTextColumn Header="Место прописки" Binding="{Binding PassportLivingPlace}" />
+                                    <DataGridTextColumn Visibility="Collapsed" Binding="{Binding Path}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Отделы"> 
+                        <Grid>
+                            <StackPanel Margin="10,0,10,0" Grid.ColumnSpan="2">
+                                <Label Content="Название отдела" />
+                                <TextBox HorizontalAlignment="Left" x:Name="departmentName" Width="120" Margin="0, -5" />
+                                <Label Content="Номер телефона отдела" />
+                                <TextBox HorizontalAlignment="Left" x:Name="departmentPhone"
+                                         Width="120" Margin="0, -5" />
+                                <DockPanel HorizontalAlignment="Stretch"
+                                           Margin="0, 10">
+                                    <Button x:Name="departmentAdd" Content="Добавить" Click="PassportAdd_OnClick" />
+                                    <Button x:Name="departmentUpdate" Content="Изменить" Margin="5, 0"
+                                            Click="PassportUpdate_OnClick" />
+                                    <Button x:Name="departmentDelete" Content="Удалить" Click="PassportDelete_OnClick" />
+                                    <Button x:Name="departmentsUpdate" HorizontalAlignment="Right"
+                                            Click="PassportsUpdate_OnClick">
+                                        <StackPanel>
+                                            <Image Source="Images/updateIcon.png" Width="20" />
+                                        </StackPanel>
+                                    </Button>
+
+                                </DockPanel>
+                            </StackPanel>
+                            <DataGrid Margin="0, 100, 0, 0" Grid.ColumnSpan="2" x:Name="departmentsDataGrid"
+                                      SelectedCellsChanged="DepartmentsDataGrid_OnSelectedCellsChanged"
+                                      AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Номер отдела" Binding="{Binding }"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                     </TabItem>
                 </TabControl>

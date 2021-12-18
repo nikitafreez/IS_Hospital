@@ -22,3 +22,5 @@ C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\bin\Debug\net5.0-windo
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\IS_Hospital_Admin.csproj.CopyComplete
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\MainWindow.g.cs
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\MainWindow.baml
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\PassportAddUpdateWindow.g.cs
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\PassportAddUpdateWindow.baml

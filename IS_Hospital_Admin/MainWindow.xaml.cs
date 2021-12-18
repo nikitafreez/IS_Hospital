@@ -23,6 +23,7 @@ namespace IS_Hospital_Admin
     {
         AllModel<Role> roles = new AllModel<Role>("Roles");
         AllModel<User> users = new AllModel<User>("Users");
+        AllModel<Passport> passports = new AllModel<Passport>("Passports");
 
         public MainWindow()
         {
@@ -72,10 +73,24 @@ namespace IS_Hospital_Admin
             }
         }
 
+        private void passportDataUpdate()
+        {
+            try
+            {
+                passportDataGrid.ItemsSource = passports.Objs;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ошибка");
+                Application.Current.Shutdown();
+            }
+        }
+
         private void AdminWindow_Loaded(object sender, RoutedEventArgs e)
         {
             roleDataUpdate();
             userDataUpdate();
+            passportDataUpdate();
         }
 
         private async void roleUpdate_Click(object sender, RoutedEventArgs e)
@@ -145,19 +160,78 @@ namespace IS_Hospital_Admin
             }
         }
 
+        public static int passOperation = 0; //1 - Add; 2 - Update
         private void PassportAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            passOperation = 1;
+            PassportAddUpdateWindow newWin = new PassportAddUpdateWindow();
+            newWin.Show();
+            passportDataUpdate();
         }
 
+        public static int passToUpdateId = 0;
         private void PassportUpdate_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (passportDataGrid.SelectedItems[0] is Passport passportToUpdate)
+            {
+                passToUpdateId = passportToUpdate.Id;
+                passOperation = 2;
+                PassportAddUpdateWindow newWin = new PassportAddUpdateWindow();
+                newWin.Show();
+            }
+            passportDataUpdate();
+        }
+        
+        private async void PassportDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (passportDataGrid.SelectedItem is Passport pass)
+            {
+                await pass.Delete();
+                passportDataUpdate();
+            }
         }
 
-        private void PassportDelete_OnClick(object sender, RoutedEventArgs e)
+        private void PassportsUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+            passportDataUpdate();
+        }
+        public static string passSeria = "";
+        public static string passNum = "";
+        public static string whoGive = "";
+        public static DateTime dateOfGive;
+        public static string firstName = "";
+        public static string secondName = "";
+        public static string middleName = "";
+        public static string gender = "";
+        public static DateTime dateOfBirth;
+        public static string livingPlace = "";
+
+        private void PassportDataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if (passportDataGrid.SelectedItem is Passport selectedItem)
+            {
+                passSeria = selectedItem.PassportSeries;
+                passNum = selectedItem.PassportNumber;
+                whoGive = selectedItem.PassportWhoGive;
+                dateOfGive = selectedItem.PassportDateOfGive;
+                firstName = selectedItem.PassportFirstName;
+                secondName = selectedItem.PassportSecondName;
+                middleName = selectedItem.PassportMiddleName;
+                gender = selectedItem.PassportGender;
+                dateOfBirth = selectedItem.PassportDateOfBirth;
+                livingPlace = selectedItem.PassportLivingPlace;
+            }
+        }
+        
+        // private void roleDataGrid_MouseLeftButtonDown(object sender, SelectedCellsChangedEventArgs e)
+        // {
+        //     if (roleDataGrid.SelectedItem is Role selectedItem)
+        //         roleTextBox.Text = selectedItem.RoleName;
+        // }
+        private void DepartmentsDataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             throw new NotImplementedException();
         }
     }
+    
 }
