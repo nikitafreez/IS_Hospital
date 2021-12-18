@@ -21,7 +21,7 @@
                 <MenuItem Header="Выйти" Click="ExitMenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="Вид">
-                <MenuItem Header="Обновить" InputGestureText="F5" Click="UpdateTables_Click"/>
+                <MenuItem Header="Обновить"/>
             </MenuItem>
             <MenuItem Header="Справка">
 

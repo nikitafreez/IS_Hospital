@@ -22,6 +22,7 @@ namespace IS_Hospital_Admin
     public partial class MainWindow : Window
     {
         AllModel<Role> roles = new AllModel<Role>("Roles");
+        AllModel<User> users = new AllModel<User>("Users");
 
         public MainWindow()
         {
@@ -40,19 +41,41 @@ namespace IS_Hospital_Admin
 
         private void roleDataUpdate()
         {
-            roleDataGrid.ItemsSource = roles.Objs;
+            try
+            {
+                roleDataGrid.ItemsSource = roles.Objs;
 
-            //List<Role> roleList = new List<Role>();
-            //foreach (Role role in roles.Objs)
-            //    roleList.Add(role);
-            roleComboBox.ItemsSource = roles.Objs;
-            roleComboBox.DisplayMemberPath = "RoleName";
-            roleComboBox.SelectedValuePath = "Id";
+                //List<Role> roleList = new List<Role>();
+                //foreach (Role role in roles.Objs)
+                //    roleList.Add(role);
+                roleComboBox.ItemsSource = roles.Objs;
+                roleComboBox.DisplayMemberPath = "RoleName";
+                roleComboBox.SelectedValuePath = "Id";
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ошибка");
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void userDataUpdate()
+        {
+            try
+            {
+                userDataGrid.ItemsSource = users.Objs;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ошибка");
+                Application.Current.Shutdown();
+            }
         }
 
         private void AdminWindow_Loaded(object sender, RoutedEventArgs e)
         {
             roleDataUpdate();
+            userDataUpdate();
         }
 
         private async void roleUpdate_Click(object sender, RoutedEventArgs e)
@@ -71,16 +94,70 @@ namespace IS_Hospital_Admin
             roleDataUpdate();
         }
 
-        private void userAdd_Click(object sender, RoutedEventArgs e)
+        private async void userAdd_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(roleComboBox.SelectedValue.ToString());
+            User user = new User();
+            user.Login = loginTextBox.Text;
+            user.Password = passwordTextBox.Text;
+            user.IdRole = int.Parse(roleComboBox.SelectedValue.ToString());
+
+            await user.Add();
+            userDataUpdate();
+            loginTextBox.Text = String.Empty;
+            passwordTextBox.Text = String.Empty;
+            roleComboBox.SelectedItem = 0;
         }
 
+        private async void UserUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+            if(userDataGrid.SelectedItems[0] is User user)
+            {
+                user.Login = loginTextBox.Text;
+                user.Password = passwordTextBox.Text;
+                user.IdRole = int.Parse(roleComboBox.SelectedValue.ToString());
+                await user.Update();
+            }
+            userDataUpdate();
+            loginTextBox.Text = String.Empty;
+            passwordTextBox.Text = String.Empty;
+            roleComboBox.SelectedItem = 0;
+        }
+
+        private async void UserDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            await (userDataGrid.SelectedItems[0] as User).Delete();
+            userDataUpdate();
+        }
         private void roleDataGrid_MouseLeftButtonDown(object sender, SelectedCellsChangedEventArgs e)
         {
-            Role? selectedItem = roleDataGrid.SelectedItem as Role;
-            if (selectedItem != null)
+            if (roleDataGrid.SelectedItem is Role selectedItem)
                 roleTextBox.Text = selectedItem.RoleName;
+        }
+
+
+        private void UserDataGrid_OnMouseLeftButtonDown(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if (userDataGrid.SelectedItem is User selectedItem)
+            {
+                loginTextBox.Text = selectedItem.Login;
+                passwordTextBox.Text = selectedItem.Password;
+                roleComboBox.SelectedValue = selectedItem.IdRole;
+            }
+        }
+
+        private void PassportAdd_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PassportUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PassportDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

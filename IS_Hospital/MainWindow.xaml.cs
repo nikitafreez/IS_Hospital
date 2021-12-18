@@ -24,7 +24,6 @@ namespace IS_Hospital
         public MainWindow()
         {
             InitializeComponent();
-            AdminPanelMenuItem.Visibility = Visibility.Collapsed;
         }
 
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
@@ -34,11 +33,11 @@ namespace IS_Hospital
 
         private void AdminMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            startAdminPanel();
         }
         private void UpdateTables_Click(object sender, RoutedEventArgs e)
         {
-            startAdminPanel();
+
         }
 
         private void AdminMenuItem_KeyDown(object sender, KeyEventArgs e)
@@ -46,10 +45,16 @@ namespace IS_Hospital
             if (e.Key == Key.F5)
                 startAdminPanel();
         }
-
+        
         private void startAdminPanel()
         {
             Process.Start(@"C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\bin\Debug\net5.0-windows\IS_Hospital_Admin.exe");
+        }
+
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            // AdminPanelMenuItem.Visibility = Visibility.Collapsed;
         }
     }
 }
