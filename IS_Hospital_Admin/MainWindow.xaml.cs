@@ -12,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;    
+using System.Windows.Shapes;
 
 namespace IS_Hospital_Admin
 {
@@ -24,6 +24,8 @@ namespace IS_Hospital_Admin
         AllModel<Role> roles = new AllModel<Role>("Roles");
         AllModel<User> users = new AllModel<User>("Users");
         AllModel<Passport> passports = new AllModel<Passport>("Passports");
+        AllModel<Department> departments = new AllModel<Department>("Departments");
+        AllModel<Position> positions = new AllModel<Position>("Positions");
 
         public MainWindow()
         {
@@ -46,9 +48,6 @@ namespace IS_Hospital_Admin
             {
                 roleDataGrid.ItemsSource = roles.Objs;
 
-                //List<Role> roleList = new List<Role>();
-                //foreach (Role role in roles.Objs)
-                //    roleList.Add(role);
                 roleComboBox.ItemsSource = roles.Objs;
                 roleComboBox.DisplayMemberPath = "RoleName";
                 roleComboBox.SelectedValuePath = "Id";
@@ -86,20 +85,53 @@ namespace IS_Hospital_Admin
             }
         }
 
+        private void departmentDataUpdate()
+        {
+            try
+            {
+                departmentsDataGrid.ItemsSource = departments.Objs;
+
+                departmentComboBox.ItemsSource = departments.Objs;
+                departmentComboBox.DisplayMemberPath = "DepartmentName";
+                departmentComboBox.SelectedValuePath = "Id";
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ошибка");
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void positionDataUpdate()
+        {
+            try
+            {
+                positionsDataGrid.ItemsSource = positions.Objs;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ошибка");
+                Application.Current.Shutdown();
+            }
+        }
+
         private void AdminWindow_Loaded(object sender, RoutedEventArgs e)
         {
             roleDataUpdate();
             userDataUpdate();
             passportDataUpdate();
+            departmentDataUpdate();
+            departmentDataUpdate();
         }
 
         private async void roleUpdate_Click(object sender, RoutedEventArgs e)
         {
-            if(roleDataGrid.SelectedItems[0] is Role role)
+            if (roleDataGrid.SelectedItems[0] is Role role)
             {
                 role.RoleName = roleTextBox.Text;
                 await role.Update();
             }
+
             roleDataUpdate();
         }
 
@@ -125,13 +157,14 @@ namespace IS_Hospital_Admin
 
         private async void UserUpdate_OnClick(object sender, RoutedEventArgs e)
         {
-            if(userDataGrid.SelectedItems[0] is User user)
+            if (userDataGrid.SelectedItems[0] is User user)
             {
                 user.Login = loginTextBox.Text;
                 user.Password = passwordTextBox.Text;
                 user.IdRole = int.Parse(roleComboBox.SelectedValue.ToString());
                 await user.Update();
             }
+
             userDataUpdate();
             loginTextBox.Text = String.Empty;
             passwordTextBox.Text = String.Empty;
@@ -143,6 +176,7 @@ namespace IS_Hospital_Admin
             await (userDataGrid.SelectedItems[0] as User).Delete();
             userDataUpdate();
         }
+
         private void roleDataGrid_MouseLeftButtonDown(object sender, SelectedCellsChangedEventArgs e)
         {
             if (roleDataGrid.SelectedItem is Role selectedItem)
@@ -161,6 +195,7 @@ namespace IS_Hospital_Admin
         }
 
         public static int passOperation = 0; //1 - Add; 2 - Update
+
         private void PassportAdd_OnClick(object sender, RoutedEventArgs e)
         {
             passOperation = 1;
@@ -170,6 +205,7 @@ namespace IS_Hospital_Admin
         }
 
         public static int passToUpdateId = 0;
+
         private void PassportUpdate_OnClick(object sender, RoutedEventArgs e)
         {
             if (passportDataGrid.SelectedItems[0] is Passport passportToUpdate)
@@ -179,9 +215,10 @@ namespace IS_Hospital_Admin
                 PassportAddUpdateWindow newWin = new PassportAddUpdateWindow();
                 newWin.Show();
             }
+
             passportDataUpdate();
         }
-        
+
         private async void PassportDelete_OnClick(object sender, RoutedEventArgs e)
         {
             if (passportDataGrid.SelectedItem is Passport pass)
@@ -195,6 +232,7 @@ namespace IS_Hospital_Admin
         {
             passportDataUpdate();
         }
+
         public static string passSeria = "";
         public static string passNum = "";
         public static string whoGive = "";
@@ -222,7 +260,7 @@ namespace IS_Hospital_Admin
                 livingPlace = selectedItem.PassportLivingPlace;
             }
         }
-        
+
         // private void roleDataGrid_MouseLeftButtonDown(object sender, SelectedCellsChangedEventArgs e)
         // {
         //     if (roleDataGrid.SelectedItem is Role selectedItem)
@@ -230,8 +268,105 @@ namespace IS_Hospital_Admin
         // }
         private void DepartmentsDataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (departmentsDataGrid.SelectedItem is Department selectedItem)
+            {
+                departmentName.Text = selectedItem.DepartmentName;
+                departmentPhone.Text = selectedItem.DepartmentPhoneNumber;
+            }
+        }
+
+        private async void DepartmentAdd_OnClick(object sender, RoutedEventArgs e)
+        {
+            Department department = new Department();
+            department.DepartmentName = departmentName.Text;
+            department.DepartmentPhoneNumber = departmentPhone.Text;
+
+            await department.Add();
+            departmentDataUpdate();
+            departmentName.Text = String.Empty;
+            departmentPhone.Text = String.Empty;
+        }
+
+        private async void DepartmentDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (departmentsDataGrid.SelectedItem is Department department)
+            {
+                await department.Delete();
+                departmentDataUpdate();
+            }
+        }
+
+        private async void DepartmentsUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+            departmentDataUpdate();
+        }
+
+        private async void DepartmentUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (departmentsDataGrid.SelectedItem is Department department)
+            {
+                department.DepartmentName = departmentName.Text;
+                department.DepartmentPhoneNumber = departmentPhone.Text;
+
+                await department.Update();
+                departmentDataUpdate();
+                departmentName.Text = String.Empty;
+                departmentPhone.Text = String.Empty;
+            }
+        }
+
+        private async void PositionAdd_OnClick(object sender, RoutedEventArgs e)
+        {
+            Position position = new Position();
+            position.PositionName = positionNameTextBox.Text;
+            position.PositionSalary = Convert.ToInt32(positionSalaryTextBox.Text);
+            position.IdDepartment = Convert.ToInt32(departmentComboBox.SelectedValue.ToString());
+
+            await position.Add();
+            positionDataUpdate();
+            positionNameTextBox.Text = String.Empty;
+            positionSalaryTextBox.Text = String.Empty;
+            departmentComboBox.SelectedItem = 1;
+        }
+
+        private async void PositionUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (positionsDataGrid.SelectedItem is Position position)
+            {
+                position.PositionName = positionNameTextBox.Text;
+                position.PositionSalary = Convert.ToInt32(positionSalaryTextBox.Text);
+                position.IdDepartment = Convert.ToInt32(departmentComboBox.SelectedValue.ToString());
+
+                await position.Update();
+                positionDataUpdate();
+                positionNameTextBox.Text = String.Empty;
+                positionSalaryTextBox.Text = String.Empty;
+                departmentComboBox.SelectedItem = 1;
+            }
+        }
+
+        private async void PositionDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (positionsDataGrid.SelectedItem is Position position)
+            {
+                await position.Delete();
+                positionDataUpdate();
+            }
+        }
+
+        private void PositionsUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+            positionDataUpdate();
+        }
+
+        private void PositionsDataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if (positionsDataGrid.SelectedItem is Position selectedItem)
+            {
+                positionNameTextBox.Text = selectedItem.PositionName;
+                positionSalaryTextBox.Text = selectedItem.PositionSalary.ToString();
+                departmentComboBox.SelectedItem = selectedItem.IdDepartment;
+            }
         }
     }
-    
 }
