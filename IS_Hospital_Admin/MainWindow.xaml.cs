@@ -27,6 +27,7 @@ namespace IS_Hospital_Admin
         AllModel<Department> departments = new AllModel<Department>("Departments");
         AllModel<Position> positions = new AllModel<Position>("Positions");
         AllModel<Worker> workers = new AllModel<Worker>("Workers");
+        AllModel<Client> clients = new AllModel<Client>("Clients");
 
         public MainWindow()
         {
@@ -129,6 +130,19 @@ namespace IS_Hospital_Admin
             }
         }
 
+        private void clientDataUpdate()
+        {
+            try
+            {
+                clientsDataGrid.ItemsSource = clients.Objs;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ошибка");
+                Application.Current.Shutdown();
+            }
+        }
+
         private void AdminWindow_Loaded(object sender, RoutedEventArgs e)
         {
             roleDataUpdate();
@@ -137,6 +151,7 @@ namespace IS_Hospital_Admin
             departmentDataUpdate();
             positionDataUpdate();
             workerDataUpdate();
+            clientDataUpdate();
         }
 
         private async void roleUpdate_Click(object sender, RoutedEventArgs e)
@@ -439,6 +454,59 @@ namespace IS_Hospital_Admin
                 WorkerEmail = worker.WorkerEmail;
                 WorkerEducation = worker.WorkerEducation;
                 WorkerEducationPlace = worker.WorkerEducationPlace;
+            }
+        }
+
+        public static int clientOperation = -1;
+        private void ClientAdd_OnClick(object sender, RoutedEventArgs e)
+        {
+            clientOperation = 1;
+            ClientAddUpdateWindow newWin = new ClientAddUpdateWindow();
+            newWin.Show();
+        }
+
+        private void ClientUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (clientsDataGrid.SelectedItem is Client client)
+            {
+                clientOperation = 2;
+                ClientAddUpdateWindow newWin = new ClientAddUpdateWindow();
+                newWin.Show();
+            }
+        }
+
+        private async void ClientDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (clientsDataGrid.SelectedItem is Client client)
+            {
+                await client.Delete();
+                clientDataUpdate();
+            }
+        }
+
+        private void ClientsUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+            clientDataUpdate();
+        }
+
+        public static int clientToUpdateId = -1;
+        public static int ClientIdPassport = -1;
+        public static string ClientInn = "";
+        public static string ClientSnils = "";
+        public static string ClientPhoneNumber = "";
+        public static string ClientEmail = "";
+        public static string ClientOms= "";
+        private void ClientsDataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if (clientsDataGrid.SelectedItem is Client client)
+            {
+                clientToUpdateId = client.Id;
+                ClientIdPassport = client.IdPassport;
+                ClientInn = client.ClientInn;
+                ClientSnils = client.ClientSnils;
+                ClientPhoneNumber = client.ClientPhoneNumber;
+                ClientEmail = client.ClientEmail;
+                ClientOms = client.ClientOms;
             }
         }
     }

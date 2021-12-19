@@ -281,7 +281,50 @@
                 </TabControl>
             </TabItem>
             <TabItem Header="Бухгалтерия"></TabItem>
-            <TabItem Header="Клиенты"></TabItem>
+            <TabItem Header="Клиенты">
+                <TabControl>
+                    <TabItem Header="Клиенты">
+                        <Grid>
+                            <StackPanel Margin="10,0,10,0" Grid.ColumnSpan="2">
+                                <DockPanel HorizontalAlignment="Stretch"
+                                           Margin="0, 10">
+                                    <Button x:Name="clientAdd" Content="Добавить" Click="ClientAdd_OnClick" />
+                                    <Button x:Name="clientUpdate" Content="Изменить" Margin="5, 0"
+                                            Click="ClientUpdate_OnClick" />
+                                    <Button x:Name="clientDelete" Content="Удалить" Click="ClientDelete_OnClick" />
+                                    <Button x:Name="clientsUpdate" HorizontalAlignment="Right"
+                                            Click="ClientsUpdate_OnClick">
+                                        <StackPanel>
+                                            <Image Source="Images/updateIcon.png" Width="20" />
+                                        </StackPanel>
+                                    </Button>
+
+                                </DockPanel>
+                            </StackPanel>
+                            <DataGrid Margin="0, 40, 0, 0" Grid.ColumnSpan="2" x:Name="clientsDataGrid"
+                                      SelectedCellsChanged="ClientsDataGrid_OnSelectedCellsChanged"
+                                      AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID клиента" Binding="{Binding Id}" />
+                                    <DataGridTextColumn Header="Паспорт" Binding="{Binding IdPassport}" />
+                                    <DataGridTextColumn Header="ИНН" Binding="{Binding ClientInn}" />
+                                    <DataGridTextColumn Header="СНИЛС" Binding="{Binding ClientSnils}" />
+                                    <DataGridTextColumn Header="ОМС" Binding="{Binding ClientOms}" />
+                                    <DataGridTextColumn Header="Номер телефона" Binding="{Binding ClientPhoneNumber}" />
+                                    <DataGridTextColumn Header="Эл. почта" Binding="{Binding ClientEmail}" />
+                                    <DataGridTextColumn Visibility="Collapsed" Binding="{Binding Path}" />
+                                </DataGrid.Columns>
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Изменить" Click="ClientUpdate_OnClick"></MenuItem>
+                                        <MenuItem Header="Удалить" Click="ClientDelete_OnClick"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
             <TabItem Header="Мед. оборудование"></TabItem>
             <TabItem Header="Мед. услуги"></TabItem>
         </TabControl>

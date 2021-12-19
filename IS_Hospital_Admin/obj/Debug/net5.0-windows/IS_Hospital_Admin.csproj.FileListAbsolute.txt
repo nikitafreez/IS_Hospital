@@ -26,3 +26,5 @@ C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windo
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\PassportAddUpdateWindow.baml
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\WorkerAddUpdateWindow.g.cs
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\WorkerAddUpdateWindow.baml
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\ClientAddUpdateWindow.g.cs
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\ClientAddUpdateWindow.baml
