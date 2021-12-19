@@ -57,6 +57,7 @@
                                 </DataGrid.Columns>
                                 <DataGrid.ContextMenu>
                                     <ContextMenu>
+                                        <MenuItem Header="Изменить" Click="UserUpdate_OnClick"></MenuItem>
                                         <MenuItem Header="Удалить" Click="UserDelete_OnClick"></MenuItem>
                                     </ContextMenu>
                                 </DataGrid.ContextMenu>
@@ -86,6 +87,7 @@
                                 </DataGrid.Columns>
                                 <DataGrid.ContextMenu>
                                     <ContextMenu>
+                                        <MenuItem Header="Изменить" Click="roleUpdate_Click"></MenuItem>
                                         <MenuItem Header="Удалить" Click="roleDelete_Click"></MenuItem>
                                     </ContextMenu>
                                 </DataGrid.ContextMenu>
@@ -132,7 +134,10 @@
                                     <DataGridTextColumn Visibility="Collapsed" Binding="{Binding Path}" />
                                 </DataGrid.Columns>
                                 <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Изменить" Click="PassportUpdate_OnClick"></MenuItem>
                                         <MenuItem Header="Удалить" Click="PassportDelete_OnClick"></MenuItem>
+                                    </ContextMenu>
                                 </DataGrid.ContextMenu>
                             </DataGrid>
                         </Grid>
@@ -171,9 +176,12 @@
                                                         Binding="{Binding DepartmentPhoneNumber}">
                                     </DataGridTextColumn>
                                 </DataGrid.Columns>
-                                
+
                                 <DataGrid.ContextMenu>
-                                    <MenuItem Header="Удалить" Click="DepartmentDelete_OnClick"></MenuItem>
+                                    <ContextMenu>
+                                        <MenuItem Header="Изменить" Click="DepartmentUpdate_OnClick"></MenuItem>
+                                        <MenuItem Header="Удалить" Click="DepartmentDelete_OnClick"></MenuItem>
+                                    </ContextMenu>
                                 </DataGrid.ContextMenu>
                             </DataGrid>
                         </Grid>
@@ -218,9 +226,54 @@
                                                         Binding="{Binding PositionSalary}" />
                                     <DataGridTextColumn Header="Отдел" Binding="{Binding IdDepartment}" />
                                 </DataGrid.Columns>
-                                
+
                                 <DataGrid.ContextMenu>
-                                    <MenuItem Header="Удалить" Click="PositionDelete_OnClick"></MenuItem>
+                                    <ContextMenu>
+                                        <MenuItem Header="Изменить" Click="PositionUpdate_OnClick"></MenuItem>
+                                        <MenuItem Header="Удалить" Click="PositionDelete_OnClick"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Сотрудники">
+                        <Grid>
+                            <StackPanel Margin="10,0,10,0" Grid.ColumnSpan="2">
+                                <DockPanel HorizontalAlignment="Stretch"
+                                           Margin="0, 10">
+                                    <Button x:Name="workerAdd" Content="Добавить" Click="WorkerAdd_OnClick" />
+                                    <Button x:Name="workerUpdate" Content="Изменить" Margin="5, 0"
+                                            Click="WorkerUpdate_OnClick" />
+                                    <Button x:Name="workerDelete" Content="Удалить" Click="WorkerDelete_OnClick" />
+                                    <Button x:Name="workersUpdate" HorizontalAlignment="Right"
+                                            Click="WorkersUpdate_OnClick">
+                                        <StackPanel>
+                                            <Image Source="Images/updateIcon.png" Width="20" />
+                                        </StackPanel>
+                                    </Button>
+
+                                </DockPanel>
+                            </StackPanel>
+                            <DataGrid Margin="0, 40, 0, 0" Grid.ColumnSpan="2" x:Name="workerDataGrid"
+                                      SelectedCellsChanged="WorkerDataGrid_OnSelectedCellsChanged"
+                                      AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID сотрудника" Binding="{Binding Id}" />
+                                    <DataGridTextColumn Header="Паспорт" Binding="{Binding IdPassport}" />
+                                    <DataGridTextColumn Header="Должность" Binding="{Binding IdPosition}" />
+                                    <DataGridTextColumn Header="ИНН" Binding="{Binding WorkerInn}" />
+                                    <DataGridTextColumn Header="СНИЛС" Binding="{Binding WorkerSnils}" />
+                                    <DataGridTextColumn Header="Номер телефона" Binding="{Binding WorkerPhoneNumber}" />
+                                    <DataGridTextColumn Header="Эл. почта" Binding="{Binding WorkerEmail}" />
+                                    <DataGridTextColumn Header="Образование" Binding="{Binding WorkerEducation}" />
+                                    <DataGridTextColumn Header="Учебное заведение" Binding="{Binding WorkerEducationPlace}" />
+                                    <DataGridTextColumn Visibility="Collapsed" Binding="{Binding Path}" />
+                                </DataGrid.Columns>
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Изменить" Click="WorkerUpdate_OnClick"></MenuItem>
+                                        <MenuItem Header="Удалить" Click="WorkerDelete_OnClick"></MenuItem>
+                                    </ContextMenu>
                                 </DataGrid.ContextMenu>
                             </DataGrid>
                         </Grid>

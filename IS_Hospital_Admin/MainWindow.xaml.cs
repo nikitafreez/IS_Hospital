@@ -26,6 +26,7 @@ namespace IS_Hospital_Admin
         AllModel<Passport> passports = new AllModel<Passport>("Passports");
         AllModel<Department> departments = new AllModel<Department>("Departments");
         AllModel<Position> positions = new AllModel<Position>("Positions");
+        AllModel<Worker> workers = new AllModel<Worker>("Workers");
 
         public MainWindow()
         {
@@ -115,13 +116,27 @@ namespace IS_Hospital_Admin
             }
         }
 
+        private void workerDataUpdate()
+        {
+            try
+            {
+                workerDataGrid.ItemsSource = workers.Objs;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ошибка");
+                Application.Current.Shutdown();
+            }
+        }
+
         private void AdminWindow_Loaded(object sender, RoutedEventArgs e)
         {
             roleDataUpdate();
             userDataUpdate();
             passportDataUpdate();
             departmentDataUpdate();
-            departmentDataUpdate();
+            positionDataUpdate();
+            workerDataUpdate();
         }
 
         private async void roleUpdate_Click(object sender, RoutedEventArgs e)
@@ -366,6 +381,64 @@ namespace IS_Hospital_Admin
                 positionNameTextBox.Text = selectedItem.PositionName;
                 positionSalaryTextBox.Text = selectedItem.PositionSalary.ToString();
                 departmentComboBox.SelectedItem = selectedItem.IdDepartment;
+            }
+        }
+
+        public static int workerOperation = 0;
+        private void WorkerAdd_OnClick(object sender, RoutedEventArgs e)
+        {
+            workerOperation = 1;
+            WorkerAddUpdateWindow newWin = new WorkerAddUpdateWindow();
+            newWin.Show();
+        }
+
+        private void WorkerUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+            if (workerDataGrid.SelectedItem is Worker worker)
+            {
+                workerOperation = 2;
+                WorkerAddUpdateWindow newWin = new WorkerAddUpdateWindow();
+                newWin.Show();
+            }
+        }
+
+        private void WorkersUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+            workerDataUpdate();
+        }
+
+        private async void WorkerDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (workerDataGrid.SelectedItem is Worker worker)
+            {
+                await worker.Delete();
+                workerDataUpdate();
+            }
+        }
+
+        public static int workerToUpdateId = -1;
+        public static int IdPassport = -1;
+        public static int IdPosition = -1;
+        public static string WorkerInn = "";
+        public static string WorkerSnils = "";
+        public static string WorkerPhoneNumber = "";
+        public static string WorkerEmail = "";
+        public static string WorkerEducation = "";
+        public static string WorkerEducationPlace = "";
+        private void WorkerDataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if (workerDataGrid.SelectedItem is Worker worker)
+            {
+                workerToUpdateId = worker.Id;
+                IdPassport = worker.IdPassport;
+                IdPosition = worker.IdPosition;
+                WorkerInn = worker.WorkerInn;
+                WorkerSnils = worker.WorkerSnils;
+                WorkerPhoneNumber = worker.WorkerPhoneNumber;
+                WorkerEmail = worker.WorkerEmail;
+                WorkerEducation = worker.WorkerEducation;
+                WorkerEducationPlace = worker.WorkerEducationPlace;
             }
         }
     }
