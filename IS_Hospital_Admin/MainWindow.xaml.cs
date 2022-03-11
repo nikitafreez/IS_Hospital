@@ -1,18 +1,10 @@
 ﻿using IS_Hospital_Admin.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace IS_Hospital_Admin
 {
@@ -28,6 +20,9 @@ namespace IS_Hospital_Admin
         AllModel<Position> positions = new AllModel<Position>("Positions");
         AllModel<Worker> workers = new AllModel<Worker>("Workers");
         AllModel<Client> clients = new AllModel<Client>("Clients");
+        AllModel<Equipment> equipments = new AllModel<Equipment>("Equipments");
+        AllModel<Salary> salaries = new AllModel<Salary>("Salaries");
+        AllModel<ServicesTable> serviceTables = new AllModel<ServicesTable>("ServicesTables");
 
         public MainWindow()
         {
@@ -79,6 +74,7 @@ namespace IS_Hospital_Admin
             try
             {
                 passportDataGrid.ItemsSource = passports.Objs;
+                passport1DataGrid.ItemsSource = passports.Objs;
             }
             catch (Exception e)
             {
@@ -143,6 +139,51 @@ namespace IS_Hospital_Admin
             }
         }
 
+        private void equipmentDataUpdate()
+        {
+            try
+            {
+                equipmentsDataGrid.ItemsSource = equipments.Objs;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ошибка");
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void salaryDataUpdate()
+        {
+            try
+            {
+                salariesDataGrid.ItemsSource = salaries.Objs;
+
+                workerINNComboBox.ItemsSource = workers.Objs;
+                workerINNComboBox.DisplayMemberPath = "WorkerInn";
+                workerINNComboBox.SelectedValuePath = "Id";
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ошибка");
+                Application.Current.Shutdown();
+            }
+        }
+        private void serviceTableDataUpdate()
+        {
+            try
+            {
+                servicesDataGrid.ItemsSource = serviceTables.Objs;
+
+                serviceWorkerComboBox.ItemsSource = workers.Objs;
+                serviceWorkerComboBox.DisplayMemberPath = "FIO";
+                serviceWorkerComboBox.SelectedValuePath = "Id";
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ошибка");
+                Application.Current.Shutdown();
+            }
+        }
         private void AdminWindow_Loaded(object sender, RoutedEventArgs e)
         {
             roleDataUpdate();
@@ -152,6 +193,9 @@ namespace IS_Hospital_Admin
             positionDataUpdate();
             workerDataUpdate();
             clientDataUpdate();
+            equipmentDataUpdate();
+            salaryDataUpdate();
+            serviceTableDataUpdate();
         }
 
         private async void roleUpdate_Click(object sender, RoutedEventArgs e)
@@ -171,11 +215,19 @@ namespace IS_Hospital_Admin
             roleDataUpdate();
         }
 
+        public string GetHash(string input)
+        {
+            var md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            return Convert.ToBase64String(hash);
+        }
+
         private async void userAdd_Click(object sender, RoutedEventArgs e)
         {
             User user = new User();
             user.Login = loginTextBox.Text;
-            user.Password = passwordTextBox.Text;
+            user.Password = GetHash(passwordTextBox.Text);
             user.IdRole = int.Parse(roleComboBox.SelectedValue.ToString());
 
             await user.Add();
@@ -409,7 +461,7 @@ namespace IS_Hospital_Admin
 
         private void WorkerUpdate_OnClick(object sender, RoutedEventArgs e)
         {
-            
+
             if (workerDataGrid.SelectedItem is Worker worker)
             {
                 workerOperation = 2;
@@ -495,7 +547,7 @@ namespace IS_Hospital_Admin
         public static string ClientSnils = "";
         public static string ClientPhoneNumber = "";
         public static string ClientEmail = "";
-        public static string ClientOms= "";
+        public static string ClientOms = "";
         private void ClientsDataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             if (clientsDataGrid.SelectedItem is Client client)
@@ -507,6 +559,155 @@ namespace IS_Hospital_Admin
                 ClientPhoneNumber = client.ClientPhoneNumber;
                 ClientEmail = client.ClientEmail;
                 ClientOms = client.ClientOms;
+            }
+        }
+
+        private async void EquipmentAdd_OnClick(object sender, RoutedEventArgs e)
+        {
+            Equipment equipment = new Equipment();
+            equipment.EquipmentName = EquipmentNameTextBox.Text;
+            equipment.EquipmentCost = Convert.ToDouble(EquipmentCostTextBox.Text);
+            equipment.EquipmentServiceLife = Convert.ToDouble(EquipmentServiceLifeTextBox.Text);
+            equipment.EquipmentStartupDate = Convert.ToDateTime(EquipmentStartupDatePicker.Text);
+
+            await equipment.Add();
+            equipmentDataUpdate();
+        }
+
+        private async void EquipmentDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            await (equipmentsDataGrid.SelectedItems[0] as Equipment).Delete();
+            equipmentDataUpdate();
+        }
+
+        private async void EquipmentUpdate_OnClick(object sender, RoutedEventArgs e)
+        {
+
+            if (equipmentsDataGrid.SelectedItems[0] is Equipment equipment)
+            {
+                equipment.EquipmentName = EquipmentNameTextBox.Text;
+                equipment.EquipmentCost = Convert.ToDouble(EquipmentCostTextBox.Text);
+                equipment.EquipmentServiceLife = Convert.ToDouble(EquipmentServiceLifeTextBox.Text);
+                equipment.EquipmentStartupDate = Convert.ToDateTime(EquipmentStartupDatePicker.Text);
+                await equipment.Update();
+            }
+
+            equipmentDataUpdate();
+        }
+
+        private void EquipmentsDataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if (equipmentsDataGrid.SelectedItem is Equipment selectedItem)
+            {
+                EquipmentNameTextBox.Text = selectedItem.EquipmentName;
+                EquipmentCostTextBox.Text = Convert.ToString(selectedItem.EquipmentCost);
+                EquipmentServiceLifeTextBox.Text = selectedItem.EquipmentServiceLife.ToString();
+                EquipmentStartupDatePicker.Text = selectedItem.EquipmentStartupDate.ToString();
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private async void salaryAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Salary salary = new Salary();
+            salary.SalaryAmount = Convert.ToInt32(SalaryAmountTextBox.Text);
+            salary.HoursWorked = Convert.ToInt32(HoursWorkedTextBox.Text);
+            salary.PrizeAmount = Convert.ToInt32(PrizeAmountTextBox.Text);
+            salary.DateOfGive = Convert.ToDateTime(DateOfGiveDatePicker.Text);
+            salary.IdWorker = Convert.ToInt32(workerINNComboBox.SelectedValue.ToString());
+
+            await salary.Add();
+            salaryDataUpdate();
+        }
+
+        private async void salaryUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            if (salariesDataGrid.SelectedItems[0] is Salary salary)
+            {
+                salary.SalaryAmount = Convert.ToInt32(SalaryAmountTextBox.Text);
+                salary.HoursWorked = Convert.ToInt32(HoursWorkedTextBox.Text);
+                salary.PrizeAmount = Convert.ToInt32(PrizeAmountTextBox.Text);
+                salary.DateOfGive = Convert.ToDateTime(DateOfGiveDatePicker.Text);
+                salary.IdWorker = Convert.ToInt32(workerINNComboBox.SelectedValue.ToString());
+
+                await salary.Update();
+            }
+
+            salaryDataUpdate();
+        }
+
+        private async void salaryDelete_Click(object sender, RoutedEventArgs e)
+        {
+            await (salariesDataGrid.SelectedItem as Salary).Delete();
+            salaryDataUpdate();
+        }
+
+        private void salariesUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            salaryDataUpdate();
+        }
+
+        private void salariesDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if (salariesDataGrid.SelectedItem is Salary selectedItem)
+            {
+                SalaryAmountTextBox.Text = selectedItem.SalaryAmount.ToString();
+                HoursWorkedTextBox.Text = selectedItem.HoursWorked.ToString();
+                PrizeAmountTextBox.Text = selectedItem.PrizeAmount.ToString();
+                DateOfGiveDatePicker.Text = selectedItem.DateOfGive.ToString();
+                workerINNComboBox.SelectedValue = selectedItem.IdWorker;
+            }
+        }
+
+
+        private async void serviceAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+            ServicesTable services = new ServicesTable();
+            services.ServiceTitle = serviceNameTextBox.Text;
+            services.ServiceCost = Convert.ToInt32(serviceCostTextBox.Text);
+            services.IdWorker = Convert.ToInt32(serviceWorkerComboBox.SelectedValue.ToString());
+
+            await services.Add();
+            serviceTableDataUpdate();
+        }
+
+        private async void serviceUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            if (servicesDataGrid.SelectedItems[0] is ServicesTable servicesTable)
+            {
+                servicesTable.ServiceTitle = serviceNameTextBox.Text;
+                servicesTable.ServiceCost = Convert.ToInt32(serviceCostTextBox.Text);
+                servicesTable.IdWorker = Convert.ToInt32(serviceWorkerComboBox.SelectedValue.ToString());
+
+                await servicesTable.Update();
+            }
+
+            serviceTableDataUpdate();
+        }
+
+        private async void serviceDelete_Click(object sender, RoutedEventArgs e)
+        {
+            await (servicesDataGrid.SelectedItem as ServicesTable).Delete();
+            serviceTableDataUpdate();
+        }
+
+        private void servicesUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            serviceTableDataUpdate();
+        }
+
+        private void servicesDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if (servicesDataGrid.SelectedItem is ServicesTable selectedItem)
+            {
+                serviceNameTextBox.Text = selectedItem.ServiceTitle;
+                serviceCostTextBox.Text = selectedItem.ServiceCost.ToString();
+                serviceWorkerComboBox.SelectedValue = selectedItem.IdWorker;
             }
         }
     }

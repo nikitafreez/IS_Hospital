@@ -1,0 +1,64 @@
+﻿<Window x:Class="IS_Hospital.WorkerAddUpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:IS_Hospital"
+        mc:Ignorable="d"
+        Title="WorkerAddUpdateWindow" Height="450" Width="800"
+        WindowState="Maximized" Loaded="WorkerAddUpdateWindow_OnLoaded" FontFamily="Century Gothic" FontSize="16">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <GroupBox Header="Контактная информация">
+                    <StackPanel>
+                        <Label Content="Адрес эл. почты" HorizontalAlignment="Left" />
+                        <TextBox x:Name="EmailTextBox" />
+                        <Label Content="Номер телефона" HorizontalAlignment="Left" />
+                        <TextBox x:Name="PhoneTextBox" />
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Документы" Width="200">
+                    <StackPanel>
+                        <Label Content="Паспорт" />
+                        <ComboBox x:Name="PassportComboBox" />
+                        <Label Content="ИНН" />
+                        <TextBox x:Name="InnTextBox" />
+                        <Label Content="СНИЛС" />
+                        <TextBox x:Name="SnilsTextBox" />
+                        <Separator Margin="0,5,0,0" />
+                        <Label Content="Должность" />
+                        <ComboBox x:Name="PositionComboBox" />
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Учёба">
+                    <StackPanel>
+                        <Label Content="Тип образования"></Label>
+                        <ComboBox x:Name="EducationTypeComboBox" SelectionChanged="EducationTypeComboBox_SelectionChanged">
+                            <ComboBox.Items>
+                                <TextBlock>Среднее общее образование</TextBlock>
+                                <TextBlock>Среднее профессиональное образование</TextBlock>
+                                <TextBlock>Бакалавриат</TextBlock>
+                                <TextBlock>Магистратура</TextBlock>
+                            </ComboBox.Items>
+                        </ComboBox>
+                        <Label Content="Учебное заведение"></Label>
+                        <TextBox x:Name="EducationPlaceTextBox" />
+
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            <Button x:Name="FuncButton" Content="FunctionalButton" Margin="0, 10" Click="FuncButton_OnClick"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

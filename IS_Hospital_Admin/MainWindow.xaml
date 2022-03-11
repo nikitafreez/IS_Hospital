@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:IS_Hospital_Admin"
         mc:Ignorable="d"
         Title="Админ окно" Height="450" Width="800" WindowState="Maximized"
-        Loaded="AdminWindow_Loaded" FontFamily="Century Gothic">
+        Loaded="AdminWindow_Loaded" FontFamily="Century Gothic" Closing="Window_Closing">
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="Файл">
@@ -17,6 +17,7 @@
                     <MenuItem Header="Excel" />
                 </MenuItem>
                 <Separator />
+                <MenuItem Header="Выйти" />
             </MenuItem>
             <MenuItem Header="Справка">
 
@@ -57,7 +58,6 @@
                                 </DataGrid.Columns>
                                 <DataGrid.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="Изменить" Click="UserUpdate_OnClick"></MenuItem>
                                         <MenuItem Header="Удалить" Click="UserDelete_OnClick"></MenuItem>
                                     </ContextMenu>
                                 </DataGrid.ContextMenu>
@@ -87,7 +87,6 @@
                                 </DataGrid.Columns>
                                 <DataGrid.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="Изменить" Click="roleUpdate_Click"></MenuItem>
                                         <MenuItem Header="Удалить" Click="roleDelete_Click"></MenuItem>
                                     </ContextMenu>
                                 </DataGrid.ContextMenu>
@@ -179,7 +178,6 @@
 
                                 <DataGrid.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="Изменить" Click="DepartmentUpdate_OnClick"></MenuItem>
                                         <MenuItem Header="Удалить" Click="DepartmentDelete_OnClick"></MenuItem>
                                     </ContextMenu>
                                 </DataGrid.ContextMenu>
@@ -224,12 +222,12 @@
                                     <DataGridTextColumn Header="Название" Binding="{Binding PositionName}" />
                                     <DataGridTextColumn Header="Оклад"
                                                         Binding="{Binding PositionSalary}" />
-                                    <DataGridTextColumn Header="Отдел" Binding="{Binding IdDepartment}" />
+                                    <DataGridTextColumn Header="Отдел ID" Binding="{Binding IdDepartment}" />
+                                    <DataGridTextColumn Header="Отдел NAME" Binding="{Binding DepName}" />
                                 </DataGrid.Columns>
 
                                 <DataGrid.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="Изменить" Click="PositionUpdate_OnClick"></MenuItem>
                                         <MenuItem Header="Удалить" Click="PositionDelete_OnClick"></MenuItem>
                                     </ContextMenu>
                                 </DataGrid.ContextMenu>
@@ -251,27 +249,29 @@
                                             <Image Source="Images/updateIcon.png" Width="20" />
                                         </StackPanel>
                                     </Button>
-
                                 </DockPanel>
                             </StackPanel>
+
+
                             <DataGrid Margin="0, 40, 0, 0" Grid.ColumnSpan="2" x:Name="workerDataGrid"
                                       SelectedCellsChanged="WorkerDataGrid_OnSelectedCellsChanged"
-                                      AutoGenerateColumns="False" IsReadOnly="True">
+                                      AutoGenerateColumns="False" IsReadOnly="True"
+                                              ItemsSource="{Binding}">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID сотрудника" Binding="{Binding Id}" />
                                     <DataGridTextColumn Header="Паспорт" Binding="{Binding IdPassport}" />
-                                    <DataGridTextColumn Header="Должность" Binding="{Binding IdPosition}" />
+                                    <DataGridTextColumn Header="Должность" Binding="{Binding PosName}" />
                                     <DataGridTextColumn Header="ИНН" Binding="{Binding WorkerInn}" />
                                     <DataGridTextColumn Header="СНИЛС" Binding="{Binding WorkerSnils}" />
                                     <DataGridTextColumn Header="Номер телефона" Binding="{Binding WorkerPhoneNumber}" />
                                     <DataGridTextColumn Header="Эл. почта" Binding="{Binding WorkerEmail}" />
                                     <DataGridTextColumn Header="Образование" Binding="{Binding WorkerEducation}" />
-                                    <DataGridTextColumn Header="Учебное заведение" Binding="{Binding WorkerEducationPlace}" />
+                                    <DataGridTextColumn Header="Уч. заведение" Binding="{Binding WorkerEducationPlace}" />
                                     <DataGridTextColumn Visibility="Collapsed" Binding="{Binding Path}" />
                                 </DataGrid.Columns>
                                 <DataGrid.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="Изменить" Click="WorkerUpdate_OnClick"></MenuItem>
+                                        <MenuItem Header="Изменить" Click="WorkersUpdate_OnClick"></MenuItem>
                                         <MenuItem Header="Удалить" Click="WorkerDelete_OnClick"></MenuItem>
                                     </ContextMenu>
                                 </DataGrid.ContextMenu>
@@ -280,9 +280,113 @@
                     </TabItem>
                 </TabControl>
             </TabItem>
-            <TabItem Header="Бухгалтерия"></TabItem>
+            <TabItem Header="Бухгалтерия">
+                <TabControl>
+                    <TabItem Header="Зарплаты">
+                        <Grid>
+                            <StackPanel Margin="10,0,10,0" Grid.ColumnSpan="2">
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Vertical">
+                                        <Label Content="Размер З/П" />
+                                        <TextBox HorizontalAlignment="Left" x:Name="SalaryAmountTextBox" Width="120" Margin="0, -5" />
+                                        <Label Content="Часов отработано" />
+                                        <TextBox HorizontalAlignment="Left" x:Name="HoursWorkedTextBox"
+                                                 Width="120" Margin="0, -5" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <Label Content="Дата выдачи З/П" />
+                                        <DatePicker HorizontalAlignment="Left" x:Name="DateOfGiveDatePicker" Width="120" Margin="0, -5" />
+                                        <Label Content="Премия" />
+                                        <TextBox HorizontalAlignment="Left" x:Name="PrizeAmountTextBox"
+                                                 Width="120" Margin="0, -5" />
+                                        <Label Content="ИНН сотрудника"/>
+                                        <ComboBox HorizontalAlignment="Left" x:Name="workerINNComboBox" Width="120" Margin="0, -5" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <DockPanel HorizontalAlignment="Stretch"
+                                           Margin="0, 10">
+                                    <Button x:Name="salaryAdd" Content="Добавить"
+                                            Click="salaryAdd_Click" />
+                                    <Button x:Name="salaryUpdate" Content="Изменить" Margin="5, 0"
+                                            Click="salaryUpdate_Click" />
+                                    <Button x:Name="salaryDelete" Content="Удалить"
+                                            Click="salaryDelete_Click" />
+                                    <Button x:Name="salariesUpdate" HorizontalAlignment="Right"
+                                            Click="salariesUpdate_Click">
+                                        <StackPanel>
+                                            <Image Source="Images/updateIcon.png" Width="20" />
+                                        </StackPanel>
+                                    </Button>
+
+                                </DockPanel>
+                            </StackPanel>
+                            <DataGrid Margin="0, 140, 0, 0" Grid.ColumnSpan="2" x:Name="salariesDataGrid"
+                                      SelectedCellsChanged="salariesDataGrid_SelectedCellsChanged"
+                                      AutoGenerateColumns="False" IsReadOnly="True"
+                                      >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID зарплаты" Binding="{Binding Id}" />
+                                    <DataGridTextColumn Header="Размер" Binding="{Binding SalaryAmount}" />
+                                    <DataGridTextColumn Header="Часов отработано" Binding="{Binding HoursWorked}" />
+                                    <DataGridTextColumn Header="Дата Выдачи" Binding="{Binding DateOfGive}" />
+                                    <DataGridTextColumn Header="Премия" Binding="{Binding PrizeAmount}" />
+                                    <DataGridTextColumn Header="ИНН сотрудника" Binding="{Binding WorINN}" />
+                                </DataGrid.Columns>
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Удалить" Click="salaryDelete_Click"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
             <TabItem Header="Клиенты">
                 <TabControl>
+                    <TabItem Header="Паспорта">
+                        <Grid>
+                            <StackPanel Margin="10,0,10,0" Grid.ColumnSpan="2">
+                                <DockPanel HorizontalAlignment="Stretch"
+                                           Margin="0, 10">
+                                    <Button x:Name="passport1Add" Content="Добавить" Click="PassportAdd_OnClick" />
+                                    <Button x:Name="passport1Update" Content="Изменить" Margin="5, 0"
+                                            Click="PassportUpdate_OnClick" />
+                                    <Button x:Name="passport1Delete" Content="Удалить" Click="PassportDelete_OnClick" />
+                                    <Button x:Name="passports1Update" HorizontalAlignment="Right"
+                                            Click="PassportsUpdate_OnClick">
+                                        <StackPanel>
+                                            <Image Source="Images/updateIcon.png" Width="20" />
+                                        </StackPanel>
+                                    </Button>
+
+                                </DockPanel>
+                            </StackPanel>
+                            <DataGrid Margin="0, 40, 0, 0" Grid.ColumnSpan="2" x:Name="passport1DataGrid"
+                                      SelectedCellsChanged="PassportDataGrid_OnSelectedCellsChanged"
+                                      AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID Паспорта" Binding="{Binding Id}" />
+                                    <DataGridTextColumn Header="Серия" Binding="{Binding PassportSeries}" />
+                                    <DataGridTextColumn Header="Номер" Binding="{Binding PassportNumber}" />
+                                    <DataGridTextColumn Header="Выдан" Binding="{Binding PassportWhoGive}" />
+                                    <DataGridTextColumn Header="Дата выдачи" Binding="{Binding PassportDateOfGive}" />
+                                    <DataGridTextColumn Header="Имя" Binding="{Binding PassportFirstName}" />
+                                    <DataGridTextColumn Header="Фамилия" Binding="{Binding PassportSecondName}" />
+                                    <DataGridTextColumn Header="Отчество" Binding="{Binding PassportMiddleName}" />
+                                    <DataGridTextColumn Header="Пол" Binding="{Binding PassportGender}" />
+                                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding PassportDateOfBirth}" />
+                                    <DataGridTextColumn Header="Место прописки" Binding="{Binding PassportLivingPlace}" />
+                                    <DataGridTextColumn Visibility="Collapsed" Binding="{Binding Path}" />
+                                </DataGrid.Columns>
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Удалить" Click="PassportDelete_OnClick"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
                     <TabItem Header="Клиенты">
                         <Grid>
                             <StackPanel Margin="10,0,10,0" Grid.ColumnSpan="2">
@@ -298,7 +402,6 @@
                                             <Image Source="Images/updateIcon.png" Width="20" />
                                         </StackPanel>
                                     </Button>
-
                                 </DockPanel>
                             </StackPanel>
                             <DataGrid Margin="0, 40, 0, 0" Grid.ColumnSpan="2" x:Name="clientsDataGrid"
@@ -325,8 +428,116 @@
                     </TabItem>
                 </TabControl>
             </TabItem>
-            <TabItem Header="Мед. оборудование"></TabItem>
-            <TabItem Header="Мед. услуги"></TabItem>
+            <TabItem Header="Мед. оборудование">
+                <TabControl>
+                    <TabItem Header="Оборудование">
+                        <Grid>
+                            <StackPanel Margin="10,0,10,0" Grid.ColumnSpan="2">
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Vertical">
+                                        <Label Content="Название оборудования" />
+                                        <TextBox HorizontalAlignment="Left" x:Name="EquipmentNameTextBox" Width="120" Margin="0, -5" />
+                                        <Label Content="Срок службы (в годах)" />
+                                        <TextBox HorizontalAlignment="Left" x:Name="EquipmentServiceLifeTextBox"
+                                                 Width="120" Margin="0, -5" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <Label Content="Дата введения в эксплуатацию" />
+                                        <DatePicker HorizontalAlignment="Left" x:Name="EquipmentStartupDatePicker" Width="120" Margin="0, -5" />
+                                        <Label Content="Стоимость" />
+                                        <TextBox HorizontalAlignment="Left" x:Name="EquipmentCostTextBox"
+                                                 Width="120" Margin="0, -5" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <DockPanel HorizontalAlignment="Stretch"
+                                           Margin="0, 10">
+                                    <Button x:Name="equipmentAdd" Content="Добавить" Click="EquipmentAdd_OnClick" />
+                                    <Button x:Name="equipmentUpdate" Content="Изменить" Margin="5, 0"
+                                            Click="EquipmentUpdate_OnClick" />
+                                    <Button x:Name="equipmentDelete" Content="Удалить" Click="EquipmentDelete_OnClick" />
+                                    <Button x:Name="equipmentsUpdate" HorizontalAlignment="Right"
+                                            Click="EquipmentUpdate_OnClick">
+                                        <StackPanel>
+                                            <Image Source="Images/updateIcon.png" Width="20" />
+                                        </StackPanel>
+                                    </Button>
+
+                                </DockPanel>
+                            </StackPanel>
+                            <DataGrid Margin="0, 110, 0, 0" Grid.ColumnSpan="2" x:Name="equipmentsDataGrid"
+                                      SelectedCellsChanged="EquipmentsDataGrid_OnSelectedCellsChanged"
+                                      AutoGenerateColumns="False" IsReadOnly="True"
+                                      >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID оборудования" Binding="{Binding Id}" />
+                                    <DataGridTextColumn Header="Название" Binding="{Binding EquipmentName}" />
+                                    <DataGridTextColumn Header="Дата ввода" Binding="{Binding EquipmentStartupDate}" />
+                                    <DataGridTextColumn Header="Срок эксплуатации" Binding="{Binding EquipmentServiceLife}" />
+                                    <DataGridTextColumn Header="Стоимость" Binding="{Binding EquipmentCost}" />
+                                </DataGrid.Columns>
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Удалить" Click="EquipmentDelete_OnClick"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="Мед. услуги">
+                <TabControl>
+                    <TabItem Header="Список услуг">
+                        <Grid>
+                            <StackPanel Margin="10,0,10,0" Grid.ColumnSpan="2">
+                                <Label Content="Название услуги" />
+                                <TextBox HorizontalAlignment="Left" x:Name="serviceNameTextBox" Width="120"
+                                         Margin="0, -5" />
+                                <Label Content="Стоимость услуги" />
+                                <TextBox HorizontalAlignment="Left" x:Name="serviceCostTextBox"
+                                         Width="120" Margin="0, -5" />
+                                <Label Content="Ответственный врач" />
+                                <ComboBox HorizontalAlignment="Left" x:Name="serviceWorkerComboBox" Width="120"
+                                          Margin="0, -5" />
+
+                                <DockPanel HorizontalAlignment="Stretch"
+                                           Margin="0, 10">
+                                    <Button x:Name="serviceAdd" Content="Добавить"
+                                            Click="serviceAdd_Click" />
+                                    <Button x:Name="serviceUpdate" Content="Изменить" Margin="5, 0"
+                                            Click="serviceUpdate_Click" />
+                                    <Button x:Name="serviceDelete" Content="Удалить"
+                                            Click="serviceDelete_Click" />
+                                    <Button x:Name="servicesUpdate" HorizontalAlignment="Right"
+                                            Click="servicesUpdate_Click">
+                                        <StackPanel>
+                                            <Image Source="Images/updateIcon.png" Width="20" />
+                                        </StackPanel>
+                                    </Button>
+                                </DockPanel>
+                            </StackPanel>
+
+                            <DataGrid Margin="0, 135, 0, 0" Grid.ColumnSpan="2" x:Name="servicesDataGrid"
+                                      SelectedCellsChanged="servicesDataGrid_SelectedCellsChanged"
+                                      AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID Услуги" Binding="{Binding Id}" />
+                                    <DataGridTextColumn Header="Название" Binding="{Binding ServiceTitle}" />
+                                    <DataGridTextColumn Header="Стоимость"
+                                                        Binding="{Binding ServiceCost}" />
+                                    <DataGridTextColumn Header="Ответственный врач" Binding="{Binding WorName}" />
+                                </DataGrid.Columns>
+
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Удалить" Click="serviceDelete_Click"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

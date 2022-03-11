@@ -28,7 +28,6 @@ Title="Авторизация" Height="450" Width="800" FontFamily="Century Goth
                     <Button x:Name="registerButton" Content="Регистрация" Margin="11,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Foreground="Black" Width="122" Height="24" Background="#FF00B0E0" Click="registerButton_Click"/>
                 </StackPanel>-->
                 <Button x:Name="loginButton" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16"  Background="#FF5FD400" Foreground="Black" Width="57" Height="24" Click="loginButton_Click"/>
-                <Button x:Name="recoverButton" Content="Восстановить пароль" Margin="0, 5" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="16" Foreground="#FF511E1E" Width="192" Height="24"/>
             </StackPanel>
         </StackPanel>
 

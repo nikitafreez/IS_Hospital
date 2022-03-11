@@ -11,6 +11,7 @@ namespace IS_Hospital_Admin
     public static class RequestHelper
     {
         private const string ApiPath = "http://localhost:5000/api/";
+        //private const string ApiPath = "http://nikitafreez1-001-site1.itempurl.com/api";
 
         public static async Task<TObj> Get<TObj>(this TObj obj) where TObj : ModelAbstract
         {

@@ -1,4 +1,3 @@
-C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\IS_Hospital_Admin.csproj.AssemblyReference.cache
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\App.g.cs
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\IS_Hospital_Admin_MarkupCompile.cache
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\IS_Hospital_Admin_MarkupCompile.lref
@@ -28,3 +27,4 @@ C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windo
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\WorkerAddUpdateWindow.baml
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\ClientAddUpdateWindow.g.cs
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\ClientAddUpdateWindow.baml
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital_Admin\obj\Debug\net5.0-windows\IS_Hospital_Admin.csproj.AssemblyReference.cache

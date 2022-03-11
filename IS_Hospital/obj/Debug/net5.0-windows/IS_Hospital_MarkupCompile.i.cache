@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\App.xaml
-2-1312940909
+5-725396283
 
-10809759655
-1941459577662
-AuthWindow.xaml;MainWindow.xaml;
+301035773716
+206991000768
+AuthWindow.xaml;ClientAddUpdateWindow.xaml;MainWindow.xaml;PassportAddUpdateWindow.xaml;WorkerAddUpdateWindow.xaml;
 
 False
 

@@ -25,11 +25,11 @@ namespace IS_Hospital_Admin
             {
                 Method = HttpMethod.Get,
                 RequestUri = new Uri($"http://localhost:5000/api/{Path}/"),
-            };
+                //RequestUri = new Uri($"http://nikitafreez1-001-site1.itempurl.com/api/{Path}/"),
+            };  
             var response = client.Send(request);
             return JsonConvert.DeserializeObject<List<TObj>>(response.Content.ReadAsStringAsync().Result) ??
                 new List<TObj>();
         }
     }
-
 }

@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IS_Hospital.AllModel&lt;TObj&gt;">
+    <Position X="17.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>AllModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.Models.Accounting">
+    <Position X="11" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Accounting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.Models.Cabinet">
+    <Position X="23.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAIAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Cabinet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.Models.Client" BaseTypeListCollapsed="true">
+    <Position X="26.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgICAAAAAAAAAEJAZAEAAAAAgAAAAAgAAAAgAAAAQAA=</HashCode>
+      <FileName>Models\Client.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IS_Hospital.Models.Department">
+    <Position X="28.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAIAAAAAAAAAAAAAAgAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Department.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.Models.Equipment">
+    <Position X="14.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAAJAAAgAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Equipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.Models.EquipmentsOnCabinet">
+    <Position X="19.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAKAAAAAABAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Models\EquipmentsOnCabinet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.Models.Passport">
+    <Position X="16.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAiAAQAABAAIAABAAAAAAAACAAAAAAgAAAABAAYA=</HashCode>
+      <FileName>Models\Passport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.Models.Position" BaseTypeListCollapsed="true">
+    <Position X="25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgIAAAIAIAAAAAAAgAAAAAAAAAgAIgAAAAA=</HashCode>
+      <FileName>Models\Position.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IS_Hospital.Models.Role">
+    <Position X="32" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.Models.Salary" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAiAAAAAQAAAAIAIAAQAAAAgAABAAIAAAAAAAAgAAA=</HashCode>
+      <FileName>Models\Salary.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IS_Hospital.Models.ServicesList">
+    <Position X="5.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAIAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ServicesList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.Models.ServicesTables" BaseTypeListCollapsed="true">
+    <Position X="18" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAEAAAQAAAAIAIAAAAAAAgAAAAAAAAAAQQAAAAAA=</HashCode>
+      <FileName>Models\ServicesTable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IS_Hospital.Models.Transaction">
+    <Position X="30.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAIAAAAAAAAAAIAgAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\Transaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.Models.Treatment">
+    <Position X="33.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAQCAAAAAAMAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Models\Treatment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.Models.User">
+    <Position X="7.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAIQAAAAAAAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.Models.Worker" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoECAAAAIAABAEIIYQkAAAAAgIAAAAAAQAAgAAAAAAA=</HashCode>
+      <FileName>Models\Worker.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IS_Hospital.Models.WorkersOnCabinet">
+    <Position X="21.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\WorkersOnCabinet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.DataGridSupport">
+    <Position X="23.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataGridSupport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.ModelAbstract">
+    <Position X="19.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAIAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>ModelAbstract.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.RequestHelper">
+    <Position X="21.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAABAABAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RequestHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IS_Hospital.AuthWindow" BaseTypeListCollapsed="true">
+    <Position X="34" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAgAAAAAgAAAAAAAAAAAAAAAAACAAAEAAAAAAA=</HashCode>
+      <FileName>AuthWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IS_Hospital.ClientAddUpdateWindow" BaseTypeListCollapsed="true">
+    <Position X="39.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClientAddUpdateWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IS_Hospital.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="35.75" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>NYcOxBKIrnRnWVfa1/Eqv5IxE/8BAK0CH8tqKWgs1fU=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IS_Hospital.PassportAddUpdateWindow" BaseTypeListCollapsed="true">
+    <Position X="37.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PassportAddUpdateWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IS_Hospital.WorkerAddUpdateWindow" BaseTypeListCollapsed="true">
+    <Position X="41" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAABAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WorkerAddUpdateWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

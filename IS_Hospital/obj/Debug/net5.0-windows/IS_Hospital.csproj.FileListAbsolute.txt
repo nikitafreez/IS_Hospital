@@ -1,4 +1,3 @@
-C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\IS_Hospital.csproj.AssemblyReference.cache
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\AuthWindow.g.cs
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\MainWindow.g.cs
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\App.g.cs
@@ -24,3 +23,22 @@ C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\IS_
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\ref\IS_Hospital.dll
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\IS_Hospital.pdb
 C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\IS_Hospital.genruntimeconfig.cache
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\ClientAddUpdateWindow.g.cs
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\PassportAddUpdateWindow.g.cs
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\WorkerAddUpdateWindow.g.cs
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\ClientAddUpdateWindow.baml
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\PassportAddUpdateWindow.baml
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\WorkerAddUpdateWindow.baml
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\obj\Debug\net5.0-windows\IS_Hospital.csproj.AssemblyReference.cache
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\bin\Debug\net5.0-windows\Microsoft.Office.Interop.Excel.dll
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\bin\Debug\net5.0-windows\Office.dll
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\bin\Debug\net5.0-windows\Syncfusion.Compression.Base.dll
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\bin\Debug\net5.0-windows\Syncfusion.Data.WPF.dll
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\bin\Debug\net5.0-windows\Syncfusion.SfGridConverter.WPF.dll
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\bin\Debug\net5.0-windows\Syncfusion.Licensing.dll
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\bin\Debug\net5.0-windows\Syncfusion.Pdf.Base.dll
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\bin\Debug\net5.0-windows\Syncfusion.SfGrid.WPF.dll
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\bin\Debug\net5.0-windows\Syncfusion.Shared.WPF.dll
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\bin\Debug\net5.0-windows\Syncfusion.XlsIO.Base.dll
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\bin\Debug\net5.0-windows\BouncyCastle.Crypto.dll
+C:\Users\nikit\source\repos\IS_Hospital\IS_Hospital\bin\Debug\net5.0-windows\itextsharp.dll

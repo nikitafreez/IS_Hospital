@@ -15,7 +15,16 @@
     <Page Update="AuthWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="ClientAddUpdateWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PassportAddUpdateWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WorkerAddUpdateWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

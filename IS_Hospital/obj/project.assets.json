@@ -2,6 +2,45 @@
   "version": 3,
   "targets": {
     "net5.0-windows7.0": {
+      "BouncyCastle/1.8.9": {
+        "type": "package",
+        "compile": {
+          "lib/BouncyCastle.Crypto.dll": {}
+        },
+        "runtime": {
+          "lib/BouncyCastle.Crypto.dll": {}
+        }
+      },
+      "iTextSharp/5.5.13.3": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle": "1.8.9"
+        },
+        "compile": {
+          "lib/itextsharp.dll": {}
+        },
+        "runtime": {
+          "lib/itextsharp.dll": {}
+        }
+      },
+      "Microsoft.Office.Interop.Excel/15.0.4795.1000": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Excel.dll": {}
+        }
+      },
+      "MicrosoftOfficeCore/15.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net35/Office.dll": {}
+        },
+        "runtime": {
+          "lib/net35/Office.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
@@ -10,10 +49,158 @@
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
+      },
+      "Syncfusion.Compression.Base/19.4.0.55": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Syncfusion.Compression.Base.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Syncfusion.Compression.Base.dll": {}
+        }
+      },
+      "Syncfusion.Data.WPF/19.4.0.55": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows7.0/Syncfusion.Data.WPF.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Syncfusion.Data.WPF.dll": {}
+        }
+      },
+      "Syncfusion.DataGridExcelExport.Wpf/19.4.0.55": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Data.WPF": "19.4.0.55",
+          "Syncfusion.Pdf.Wpf": "19.4.0.55",
+          "Syncfusion.SfGrid.WPF": "19.4.0.55",
+          "Syncfusion.Shared.WPF": "19.4.0.55",
+          "Syncfusion.XlsIO.Wpf": "19.4.0.55"
+        },
+        "compile": {
+          "lib/net5.0-windows7.0/Syncfusion.SfGridConverter.WPF.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Syncfusion.SfGridConverter.WPF.dll": {}
+        }
+      },
+      "Syncfusion.Licensing/19.4.0.55": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Pdf.Wpf/19.4.0.55": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Compression.Base": "19.4.0.55",
+          "Syncfusion.Licensing": "19.4.0.55"
+        },
+        "compile": {
+          "lib/net5.0-windows7.0/Syncfusion.Pdf.Base.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Syncfusion.Pdf.Base.dll": {}
+        }
+      },
+      "Syncfusion.SfGrid.WPF/19.4.0.55": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Data.WPF": "19.4.0.55",
+          "Syncfusion.Licensing": "19.4.0.55",
+          "Syncfusion.Shared.WPF": "19.4.0.55"
+        },
+        "compile": {
+          "lib/net5.0-windows7.0/Syncfusion.SfGrid.WPF.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Syncfusion.SfGrid.WPF.dll": {}
+        }
+      },
+      "Syncfusion.Shared.WPF/19.4.0.55": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "19.4.0.55"
+        },
+        "compile": {
+          "lib/net5.0-windows7.0/Syncfusion.Shared.WPF.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Syncfusion.Shared.WPF.dll": {}
+        }
+      },
+      "Syncfusion.XlsIO.Wpf/19.4.0.55": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Compression.Base": "19.4.0.55",
+          "Syncfusion.Licensing": "19.4.0.55"
+        },
+        "compile": {
+          "lib/net5.0-windows7.0/Syncfusion.XlsIO.Base.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Syncfusion.XlsIO.Base.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "BouncyCastle/1.8.9": {
+      "sha512": "axnBgvdD5n+FnEG6efk/tfKuMFru7R/EoISH9zjh319yb3HD24TEHSAbNN/lTRT2ulOGRxDgOsCjkuk08iwWPg==",
+      "type": "package",
+      "path": "bouncycastle/1.8.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "bouncycastle.1.8.9.nupkg.sha512",
+        "bouncycastle.nuspec",
+        "lib/BouncyCastle.Crypto.dll"
+      ]
+    },
+    "iTextSharp/5.5.13.3": {
+      "sha512": "vtnMhTEJdZFCkLqaQLjD8aqTBIVKHPrSFuSXnxbLEJlvE/j/l88fvG9wtsejXTmhtErMo0lA9T2LdfdfbwplYw==",
+      "type": "package",
+      "path": "itextsharp/5.5.13.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "gnu-agpl-v3.0.md",
+        "itextsharp.5.5.13.3.nupkg.sha512",
+        "itextsharp.nuspec",
+        "lib/iTextSharp.xml",
+        "lib/itextsharp.dll",
+        "notice.txt"
+      ]
+    },
+    "Microsoft.Office.Interop.Excel/15.0.4795.1000": {
+      "sha512": "DfceS96ustwfL8EOJNNRtpk6b0RylhjNpgeeemuvi9X4GYks2UTeAimjSrdFEfuqRo5ibZ4Sd0gJIeDr9gMa6Q==",
+      "type": "package",
+      "path": "microsoft.office.interop.excel/15.0.4795.1000",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Microsoft.Office.Interop.Excel.dll",
+        "microsoft.office.interop.excel.15.0.4795.1000.nupkg.sha512",
+        "microsoft.office.interop.excel.nuspec"
+      ]
+    },
+    "MicrosoftOfficeCore/15.0.0": {
+      "sha512": "/KgYw8uvv0Ut8FPvyEa1XJ/TrLSRgvTv3JgC2IT0/8NwoICzbEJWfmfwsE6Dwi8WH0jVkTEO7zRvGvaKqUOhqQ==",
+      "type": "package",
+      "path": "microsoftofficecore/15.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Office.dll",
+        "microsoftofficecore.15.0.0.nupkg.sha512",
+        "microsoftofficecore.nuspec"
+      ]
+    },
     "Newtonsoft.Json/13.0.1": {
       "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "type": "package",
@@ -40,11 +227,282 @@
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
+    },
+    "Syncfusion.Compression.Base/19.4.0.55": {
+      "sha512": "yqP1SvELbacCU8iqEooHN1QlFHA7mYXcMl2duC0qoqKk6tjvnti+j+dx12Jgd5rtPOduIvDAkVSbXosc6ppKBQ==",
+      "type": "package",
+      "path": "syncfusion.compression.base/19.4.0.55",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net20/Syncfusion.Compression.Base.dll",
+        "lib/net20/Syncfusion.Compression.Base.xml",
+        "lib/net35/Syncfusion.Compression.Base.dll",
+        "lib/net35/Syncfusion.Compression.Base.xml",
+        "lib/net40/Syncfusion.Compression.Base.dll",
+        "lib/net40/Syncfusion.Compression.Base.xml",
+        "lib/net45/Syncfusion.Compression.Base.dll",
+        "lib/net45/Syncfusion.Compression.Base.xml",
+        "lib/net451/Syncfusion.Compression.Base.dll",
+        "lib/net451/Syncfusion.Compression.Base.xml",
+        "lib/net46/Syncfusion.Compression.Base.dll",
+        "lib/net46/Syncfusion.Compression.Base.xml",
+        "lib/net5.0/Syncfusion.Compression.Base.dll",
+        "lib/net5.0/Syncfusion.Compression.Base.xml",
+        "lib/netcoreapp3.1/Syncfusion.Compression.Base.dll",
+        "lib/netcoreapp3.1/Syncfusion.Compression.Base.xml",
+        "syncfusion.compression.base.19.4.0.55.nupkg.sha512",
+        "syncfusion.compression.base.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Data.WPF/19.4.0.55": {
+      "sha512": "WKqAqicjqexToF4PXDOfmp6OPZh4bfgb8NmTh4u7u9QOQ79gd8dDLbkhRYYt/q7VT3GmhUZFUjwGLEhCIbb4VQ==",
+      "type": "package",
+      "path": "syncfusion.data.wpf/19.4.0.55",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net40/Syncfusion.Data.WPF.dll",
+        "lib/net40/Syncfusion.Data.WPF.xml",
+        "lib/net45/Syncfusion.Data.WPF.dll",
+        "lib/net45/Syncfusion.Data.WPF.xml",
+        "lib/net451/Syncfusion.Data.WPF.dll",
+        "lib/net451/Syncfusion.Data.WPF.xml",
+        "lib/net46/Syncfusion.Data.WPF.dll",
+        "lib/net46/Syncfusion.Data.WPF.xml",
+        "lib/net5.0-windows7.0/Syncfusion.Data.WPF.dll",
+        "lib/net5.0-windows7.0/Syncfusion.Data.WPF.xml",
+        "lib/netcoreapp3.1/Syncfusion.Data.WPF.dll",
+        "lib/netcoreapp3.1/Syncfusion.Data.WPF.xml",
+        "syncfusion.data.wpf.19.4.0.55.nupkg.sha512",
+        "syncfusion.data.wpf.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.DataGridExcelExport.Wpf/19.4.0.55": {
+      "sha512": "+aL0Zrm7FkcmeSOl0jH8zT9YWX0UzuiHAsDl/mp5J0Ta6nsydPk5tbZoZDGIYiIG771yV+fjjIE2uhzf67QWpw==",
+      "type": "package",
+      "path": "syncfusion.datagridexcelexport.wpf/19.4.0.55",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net40/Syncfusion.SfGridConverter.WPF.dll",
+        "lib/net40/Syncfusion.SfGridConverter.WPF.xml",
+        "lib/net45/Syncfusion.SfGridConverter.WPF.dll",
+        "lib/net45/Syncfusion.SfGridConverter.WPF.xml",
+        "lib/net451/Syncfusion.SfGridConverter.WPF.dll",
+        "lib/net451/Syncfusion.SfGridConverter.WPF.xml",
+        "lib/net46/Syncfusion.SfGridConverter.WPF.dll",
+        "lib/net46/Syncfusion.SfGridConverter.WPF.xml",
+        "lib/net5.0-windows7.0/Syncfusion.SfGridConverter.WPF.dll",
+        "lib/net5.0-windows7.0/Syncfusion.SfGridConverter.WPF.xml",
+        "lib/netcoreapp3.1/Syncfusion.SfGridConverter.WPF.dll",
+        "lib/netcoreapp3.1/Syncfusion.SfGridConverter.WPF.xml",
+        "syncfusion.datagridexcelexport.wpf.19.4.0.55.nupkg.sha512",
+        "syncfusion.datagridexcelexport.wpf.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Licensing/19.4.0.55": {
+      "sha512": "TRw+uyLdh5v40bE/qjA8sBHAMVRQm+7wo5boqPsFUl5COQ90yxEgFW7c21JXGnHyc1wV4jQ3sC78ccaUo7pCzg==",
+      "type": "package",
+      "path": "syncfusion.licensing/19.4.0.55",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/MonoAndroid10.0/Syncfusion.Licensing.dll",
+        "lib/MonoAndroid90/Syncfusion.Licensing.dll",
+        "lib/Xamarin.Mac/Syncfusion.Licensing.dll",
+        "lib/Xamarin.iOS10/Syncfusion.Licensing.dll",
+        "lib/net20/Syncfusion.Licensing.dll",
+        "lib/net35/Syncfusion.Licensing.dll",
+        "lib/net40/Syncfusion.Licensing.dll",
+        "lib/net45/Syncfusion.Licensing.dll",
+        "lib/net451/Syncfusion.Licensing.dll",
+        "lib/net46/Syncfusion.Licensing.dll",
+        "lib/net5.0-windows10.0/Syncfusion.Licensing.dll",
+        "lib/net5.0/Syncfusion.Licensing.dll",
+        "lib/netcoreapp3.1/Syncfusion.Licensing.dll",
+        "lib/netstandard1.0/Syncfusion.Licensing.dll",
+        "lib/netstandard1.2/Syncfusion.Licensing.dll",
+        "lib/netstandard1.4/Syncfusion.Licensing.dll",
+        "lib/netstandard2.0/Syncfusion.Licensing.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.Licensing.dll",
+        "lib/uap10.0/Syncfusion.Licensing.dll",
+        "syncfusion.licensing.19.4.0.55.nupkg.sha512",
+        "syncfusion.licensing.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Pdf.Wpf/19.4.0.55": {
+      "sha512": "Bw0EPa2tVf6I/gVWDHm1a5ZuUW83CQPoH7NhX34OYNY05/Y6MmPTf2zMcXOXYfLF+Wx7De6jepsrDIZF3uYA5g==",
+      "type": "package",
+      "path": "syncfusion.pdf.wpf/19.4.0.55",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net35/Syncfusion.Pdf.Base.dll",
+        "lib/net35/Syncfusion.Pdf.Base.xml",
+        "lib/net40/Syncfusion.Pdf.Base.dll",
+        "lib/net40/Syncfusion.Pdf.Base.xml",
+        "lib/net45/Syncfusion.Pdf.Base.dll",
+        "lib/net45/Syncfusion.Pdf.Base.xml",
+        "lib/net451/Syncfusion.Pdf.Base.dll",
+        "lib/net451/Syncfusion.Pdf.Base.xml",
+        "lib/net46/Syncfusion.Pdf.Base.dll",
+        "lib/net46/Syncfusion.Pdf.Base.xml",
+        "lib/net5.0-windows7.0/Syncfusion.Pdf.Base.dll",
+        "lib/net5.0-windows7.0/Syncfusion.Pdf.Base.xml",
+        "lib/netcoreapp3.1/Syncfusion.Pdf.Base.dll",
+        "lib/netcoreapp3.1/Syncfusion.Pdf.Base.xml",
+        "syncfusion.pdf.wpf.19.4.0.55.nupkg.sha512",
+        "syncfusion.pdf.wpf.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.SfGrid.WPF/19.4.0.55": {
+      "sha512": "oxrpXZaOczKQ7K8r2SdL1tVb6Dsyrm7DTPM14qXeNlvaqygFnJnZ2Nz2IyMbCH+VaeGg83F82sXb3O3XwFhjjw==",
+      "type": "package",
+      "path": "syncfusion.sfgrid.wpf/19.4.0.55",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net40/Design/Syncfusion.SfGrid.WPF.DesignTools.dll",
+        "lib/net40/Design/Syncfusion.SfGrid.WPF.Expression.Design.dll",
+        "lib/net40/Design/Syncfusion.SfGrid.WPF.VisualStudio.Design.dll",
+        "lib/net40/Syncfusion.SfGrid.WPF.dll",
+        "lib/net40/Syncfusion.SfGrid.WPF.xml",
+        "lib/net45/Design/Syncfusion.SfGrid.WPF.DesignTools.dll",
+        "lib/net45/Design/Syncfusion.SfGrid.WPF.Expression.Design.dll",
+        "lib/net45/Design/Syncfusion.SfGrid.WPF.VisualStudio.Design.dll",
+        "lib/net45/Syncfusion.SfGrid.WPF.dll",
+        "lib/net45/Syncfusion.SfGrid.WPF.xml",
+        "lib/net451/Design/Syncfusion.SfGrid.WPF.DesignTools.dll",
+        "lib/net451/Design/Syncfusion.SfGrid.WPF.Expression.Design.dll",
+        "lib/net451/Design/Syncfusion.SfGrid.WPF.VisualStudio.Design.dll",
+        "lib/net451/Syncfusion.SfGrid.WPF.dll",
+        "lib/net451/Syncfusion.SfGrid.WPF.xml",
+        "lib/net46/Design/Syncfusion.SfGrid.WPF.DesignTools.dll",
+        "lib/net46/Design/Syncfusion.SfGrid.WPF.Expression.Design.dll",
+        "lib/net46/Design/Syncfusion.SfGrid.WPF.VisualStudio.Design.dll",
+        "lib/net46/Syncfusion.SfGrid.WPF.dll",
+        "lib/net46/Syncfusion.SfGrid.WPF.xml",
+        "lib/net5.0-windows7.0/Design/Syncfusion.SfGrid.WPF.DesignTools.dll",
+        "lib/net5.0-windows7.0/Syncfusion.SfGrid.WPF.dll",
+        "lib/net5.0-windows7.0/Syncfusion.SfGrid.WPF.xml",
+        "lib/netcoreapp3.1/Design/Syncfusion.SfGrid.WPF.DesignTools.dll",
+        "lib/netcoreapp3.1/Syncfusion.SfGrid.WPF.dll",
+        "lib/netcoreapp3.1/Syncfusion.SfGrid.WPF.xml",
+        "syncfusion.sfgrid.wpf.19.4.0.55.nupkg.sha512",
+        "syncfusion.sfgrid.wpf.nuspec",
+        "syncfusion_logo.png",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "Syncfusion.Shared.WPF/19.4.0.55": {
+      "sha512": "x+QgFQ01GKQbwc4OH7Rq6hbFT6wojFz2votdXwAQJAAYYFheGJ7G1s6D7T65a9VUJuOrXQ3M2YW8X3SBnVKWYw==",
+      "type": "package",
+      "path": "syncfusion.shared.wpf/19.4.0.55",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net35/Design/Syncfusion.Design.Wpf.dll",
+        "lib/net35/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/net35/Design/Syncfusion.Shared.Wpf.Expression.Design.dll",
+        "lib/net35/Design/Syncfusion.Shared.Wpf.VisualStudio.Design.dll",
+        "lib/net35/Design/Syncfusion.Shared.Wpf.dll.Design.dll",
+        "lib/net35/Syncfusion.Shared.WPF.dll",
+        "lib/net35/Syncfusion.Shared.WPF.xml",
+        "lib/net40/Design/Syncfusion.Design.Wpf.dll",
+        "lib/net40/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/net40/Design/Syncfusion.Shared.Wpf.Expression.Design.dll",
+        "lib/net40/Design/Syncfusion.Shared.Wpf.VisualStudio.Design.dll",
+        "lib/net40/Design/Syncfusion.Shared.Wpf.dll.Design.dll",
+        "lib/net40/Syncfusion.Shared.WPF.dll",
+        "lib/net40/Syncfusion.Shared.WPF.xml",
+        "lib/net45/Design/Syncfusion.Design.Wpf.dll",
+        "lib/net45/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/net45/Design/Syncfusion.Shared.Wpf.Expression.Design.dll",
+        "lib/net45/Design/Syncfusion.Shared.Wpf.VisualStudio.Design.dll",
+        "lib/net45/Design/Syncfusion.Shared.Wpf.dll.Design.dll",
+        "lib/net45/Syncfusion.Shared.WPF.dll",
+        "lib/net45/Syncfusion.Shared.WPF.xml",
+        "lib/net451/Design/Syncfusion.Design.Wpf.dll",
+        "lib/net451/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/net451/Design/Syncfusion.Shared.Wpf.Expression.Design.dll",
+        "lib/net451/Design/Syncfusion.Shared.Wpf.VisualStudio.Design.dll",
+        "lib/net451/Design/Syncfusion.Shared.Wpf.dll.Design.dll",
+        "lib/net451/Syncfusion.Shared.WPF.dll",
+        "lib/net451/Syncfusion.Shared.WPF.xml",
+        "lib/net46/Design/Syncfusion.Design.Wpf.dll",
+        "lib/net46/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/net46/Design/Syncfusion.Shared.Wpf.Expression.Design.dll",
+        "lib/net46/Design/Syncfusion.Shared.Wpf.VisualStudio.Design.dll",
+        "lib/net46/Design/Syncfusion.Shared.Wpf.dll.Design.dll",
+        "lib/net46/Syncfusion.Shared.WPF.dll",
+        "lib/net46/Syncfusion.Shared.WPF.xml",
+        "lib/net5.0-windows7.0/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/net5.0-windows7.0/Syncfusion.Shared.WPF.dll",
+        "lib/net5.0-windows7.0/Syncfusion.Shared.WPF.xml",
+        "lib/netcoreapp3.1/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/netcoreapp3.1/Syncfusion.Shared.WPF.dll",
+        "lib/netcoreapp3.1/Syncfusion.Shared.WPF.xml",
+        "syncfusion.shared.wpf.19.4.0.55.nupkg.sha512",
+        "syncfusion.shared.wpf.nuspec",
+        "syncfusion_logo.png",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "Syncfusion.XlsIO.Wpf/19.4.0.55": {
+      "sha512": "1p0T5zV/wNU/lM/aq7YqjQOPU/BUoTyqUm2jjo/9GCIZS+SLeEHdz6Ow4kv7F5yLBMEfZ3vphzgPF3tNpJPtnQ==",
+      "type": "package",
+      "path": "syncfusion.xlsio.wpf/19.4.0.55",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net35/Syncfusion.XlsIO.Base.dll",
+        "lib/net35/Syncfusion.XlsIO.Base.xml",
+        "lib/net40/Syncfusion.XlsIO.Base.dll",
+        "lib/net40/Syncfusion.XlsIO.Base.xml",
+        "lib/net45/Syncfusion.XlsIO.Base.dll",
+        "lib/net45/Syncfusion.XlsIO.Base.xml",
+        "lib/net451/Syncfusion.XlsIO.Base.dll",
+        "lib/net451/Syncfusion.XlsIO.Base.xml",
+        "lib/net46/Syncfusion.XlsIO.Base.dll",
+        "lib/net46/Syncfusion.XlsIO.Base.xml",
+        "lib/net5.0-windows7.0/Syncfusion.XlsIO.Base.dll",
+        "lib/net5.0-windows7.0/Syncfusion.XlsIO.Base.xml",
+        "lib/netcoreapp3.1/Syncfusion.XlsIO.Base.dll",
+        "lib/netcoreapp3.1/Syncfusion.XlsIO.Base.xml",
+        "syncfusion.xlsio.wpf.19.4.0.55.nupkg.sha512",
+        "syncfusion.xlsio.wpf.nuspec",
+        "syncfusion_logo.png"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
-      "Newtonsoft.Json >= 13.0.1"
+      "Microsoft.Office.Interop.Excel >= 15.0.4795.1000",
+      "MicrosoftOfficeCore >= 15.0.0",
+      "Newtonsoft.Json >= 13.0.1",
+      "Syncfusion.DataGridExcelExport.Wpf >= 19.4.0.55",
+      "iTextSharp >= 5.5.13.3"
     ]
   },
   "packageFolders": {
@@ -64,7 +522,7 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0-windows"
+        "net5.0-windows7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -86,9 +544,25 @@
       "net5.0-windows7.0": {
         "targetAlias": "net5.0-windows",
         "dependencies": {
+          "Microsoft.Office.Interop.Excel": {
+            "target": "Package",
+            "version": "[15.0.4795.1000, )"
+          },
+          "MicrosoftOfficeCore": {
+            "target": "Package",
+            "version": "[15.0.0, )"
+          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"
+          },
+          "Syncfusion.DataGridExcelExport.Wpf": {
+            "target": "Package",
+            "version": "[19.4.0.55, )"
+          },
+          "iTextSharp": {
+            "target": "Package",
+            "version": "[5.5.13.3, )"
           }
         },
         "imports": [
@@ -112,5 +586,47 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"BouncyCastle 1.8.9\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"iTextSharp 5.5.13.3\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "iTextSharp",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"Microsoft.Office.Interop.Excel 15.0.4795.1000\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "Microsoft.Office.Interop.Excel",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"MicrosoftOfficeCore 15.0.0\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "MicrosoftOfficeCore",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    }
+  ]
 }
